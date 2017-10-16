@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 using MyToDo.Views;
 
@@ -15,7 +16,7 @@ namespace MyToDo
         {
             InitializeComponent();
 
-            MainPage = new UserPage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
