@@ -92,7 +92,7 @@ namespace MyToDo.ViewModels
             }
         }
 
-        //JS: added by JS and need to test.
+        //JS: added by JS 
         void DoneUpdate(object obj)
         {
             var itemString = (string)obj;
@@ -100,31 +100,33 @@ namespace MyToDo.ViewModels
             int id;
             if (int.TryParse(columns[0], out id))
             {
-                database.UpdateItem<Todo>(id);
-                // Records.Remove((string)obj);
+                database.UpdateItem("update Todo set IsDone='Yes' where id=?",id);
+      
                 RaisePropertyChanged(nameof(Records));
                 ClearForm();
             }
         }
 
         //Added by JS--------------------------------------------------------------------------------------
-        void FilterByIsDone()
+        void FilterByIsDone(object obj)
         {
-            var result = database.QueryNoArgs<Todo>("SELECT * FROM TodoList WHERE IdDone = 'Yes' ");
+            var isdone = ((string)obj) == "No" ? "Yes" : "No";
+            var result = database.Query<Todo>("SELECT * FROM Todo WHERE IsDone = 'Yes'", new object[] { isdone });
             Records.Clear();
-            foreach (var todo in result)
+            foreach (var todoisdone in result)
             {
-                Records.Add(todo.ToString());
+                Records.Add(todoisdone.ToString());
             }
         }
 
-        void FilterByNotDone()
+        void FilterByNotDone(object obj)
         {
-            var result = database.QueryNoArgs<Todo>("SELECT * FROM TodoList WHERE IdDone = 'No' ");
+            var isdone = ((string)obj) == "Yes" ? "Yes" : "No";
+            var result = database.Query<Todo>("SELECT * FROM Todo WHERE IsDone = 'No'", new object[] { isdone });
             Records.Clear();
-            foreach (var todo in result)
+            foreach (var todoisdone in result)
             {
-                Records.Add(todo.ToString());
+                Records.Add(todoisdone.ToString());
             }
         }
 
@@ -139,7 +141,7 @@ namespace MyToDo.ViewModels
         void FilterByGender(object obj)
         {
             var gender = ((string)obj) == "Female" ? Gender.Female : Gender.Male;
-            var result = database.Query<Todo>("SELECT * FROM TodoList WHERE Gender = ?", new object[] { gender });
+            var result = database.Query<Todo>("SELECT * FROM Todo WHERE Gender = ?", new object[] { gender });
             Records.Clear();
             foreach (var person in result)
             {
@@ -152,7 +154,7 @@ namespace MyToDo.ViewModels
             int age;
             if (int.TryParse((string)obj, out age))
             {
-                var result = database.Query<Todo>("SELECT * FROM TodoList WHERE Age > ?", new object[] { age });
+                var result = database.Query<Todo>("SELECT * FROM Todo WHERE Age > ?", new object[] { age });
                 Records.Clear();
                 foreach (var person in result)
                 {

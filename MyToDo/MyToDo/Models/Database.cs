@@ -70,6 +70,7 @@ namespace MyToDo.Models
                 return connection.Query<T>(query, args);
             }
         }
+     
 
         public IEnumerable<T> GetItems<T>() where T : new()
         {
@@ -95,21 +96,14 @@ namespace MyToDo.Models
             }
         }
 
-        //added by JS
-        public List<T> QueryNoArgs<T>(string query) where T : new()
-        {
-            lock (locker)
-            {
-                return connection.Query<T>(query);
-            }
-        }
+        
 
         //added by JS
-        public int UpdateItem<T>(int id)
+        public int UpdateItem(string UpdateSQL, int id)
         {
             lock (locker)
             {
-                return connection.Execute("update TodoList set IsDone='Yes' where ID=?", id);
+                return connection.Execute(UpdateSQL, id);
             }
         }
 
