@@ -18,6 +18,13 @@ namespace MyToDo.Views
                 IconSource = "contacts.png",
                 TargetType = typeof(TodoPage)
             });
+
+            masterPageItems.Add(new MasterPageItem
+            {
+                Title = "IsDone",
+                IconSource = "contacts.png",
+                TargetType = typeof(TodoIsdonePage)
+            });
             masterPageItems.Add(new MasterPageItem
             {
                 Title = "User",
@@ -26,9 +33,9 @@ namespace MyToDo.Views
             });
             masterPageItems.Add(new MasterPageItem
             {
-                Title = "Todo2",
+                Title = "Person",
                 IconSource = "reminders.png",
-                TargetType = typeof(TodoPage)
+                TargetType = typeof(PersonPage)
             });
 
             listView.ItemsSource = masterPageItems;

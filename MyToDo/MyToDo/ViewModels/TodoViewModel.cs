@@ -6,7 +6,7 @@ using MyToDo.Models;
 
 namespace MyToDo.ViewModels
 {
-  public  class TodoViewModel:BaseViewModel
+    public class TodoViewModel : BaseViewModel
     {
 
         readonly Database database;
@@ -25,6 +25,7 @@ namespace MyToDo.ViewModels
 
         public string IsDone { get; set; }
 
+    
         public ObservableCollection<string> Records { get; set; }
         public ICommand AddCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
@@ -110,7 +111,7 @@ namespace MyToDo.ViewModels
         //Added by JS--------------------------------------------------------------------------------------
         void FilterByIsDone(object obj)
         {
-            var isdone = ((string)obj) == "No" ? "Yes" : "No";
+            var isdone = ((string)obj) == "Yes" ? "Yes" : "No";
             var result = database.Query<Todo>("SELECT * FROM Todo WHERE IsDone = 'Yes'", new object[] { isdone });
             Records.Clear();
             foreach (var todoisdone in result)
@@ -121,7 +122,7 @@ namespace MyToDo.ViewModels
 
         void FilterByNotDone(object obj)
         {
-            var isdone = ((string)obj) == "Yes" ? "Yes" : "No";
+            var isdone = ((string)obj) == "No" ? "Yes" : "No";
             var result = database.Query<Todo>("SELECT * FROM Todo WHERE IsDone = 'No'", new object[] { isdone });
             Records.Clear();
             foreach (var todoisdone in result)

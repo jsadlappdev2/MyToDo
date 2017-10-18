@@ -17,6 +17,10 @@ namespace MyToDo
             InitializeComponent();
 
             MainPage = new MainPage();
+            //{
+            //    BackgroundColor = Color.FromHex("F44336")
+
+            //};
         }
 
         protected override void OnStart()
