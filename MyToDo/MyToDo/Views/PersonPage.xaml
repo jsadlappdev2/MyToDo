@@ -4,9 +4,13 @@
              xmlns:local ="clr-namespace:MyToDo"
              x:Class="MyToDo.Views.PersonPage"
              x:Name="PersonPage">
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Icon="delete.png"  />
+        <ToolbarItem Text="Edit" Icon="edit.png" />
+    </ContentPage.ToolbarItems>
 
-
-<StackLayout Padding="20">
+    <StackLayout Padding="20">
     <Entry
 			Text="{Binding FirstName}"
 			Placeholder="First Name"/>

@@ -8,6 +8,11 @@
              Title="Isdone Todos"
              x:Name="IsdonePage">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Delete" Icon="delete.png"  />
+        <ToolbarItem Text="Edit" Icon="edit.png" />
+    </ContentPage.ToolbarItems>
+
     <Grid RowSpacing="0" ColumnSpacing="0" Margin="5,5,5,0">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>

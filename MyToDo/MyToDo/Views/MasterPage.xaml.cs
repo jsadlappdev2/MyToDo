@@ -47,6 +47,14 @@ namespace MyToDo.Views
                 TargetType = typeof(TodoPage)
             });
 
+
+            masterPageItems.Add(new MasterPageItem
+            {
+                Title = "Todo Details",
+                IconSource = "reminders.png",
+                TargetType = typeof(TodoDetailPage)
+            });
+
             listView.ItemsSource = masterPageItems;
         }
     }
