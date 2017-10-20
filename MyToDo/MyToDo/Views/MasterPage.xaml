@@ -2,30 +2,79 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyToDo.Views.MasterPage"
+             xmlns:helpers="clr-namespace:MyToDo.Helpers;assembly=MyToDo"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
 			 Icon="hamburger.png"
 			 Title="Menu"
              BackgroundColor="Gray">
-    
-    <Grid Padding="25,40,25,20">
+
+    <Grid Padding="25,20,25,20">
+        <Grid.BackgroundColor>
+            <helpers:OnCustomPlatform   
+                x:TypeArguments="Color"
+                Android="{StaticResource BlueColor}"
+                iOS="{StaticResource BlueColor}"  />
+        </Grid.BackgroundColor>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+        <Grid.Margin>
+            <helpers:OnCustomPlatform         
+                x:TypeArguments="Thickness"
+                Android="0"/>
+        </Grid.Margin>
 
+        <!-- MENU -->
 
-
+        <!-- BACKGROUND -->
+        <!--<Image
+                Grid.Row="0"
+                Grid.RowSpan="5">
+            <Image.Source>
+                <helpers:OnCustomPlatform 
+                        x:TypeArguments="ImageSource"
+                        Android="menu_bg.png"
+                        iOS="menu_bg.png"   />
+            </Image.Source>
+            <Image.Aspect>
+                <helpers:OnCustomPlatform  
+                        x:TypeArguments="Aspect"
+                        Android="AspectFit"
+                        iOS="AspectFill"    />
+            </Image.Aspect>
+            <Image.HorizontalOptions>
+                <helpers:OnCustomPlatform  
+                        x:TypeArguments="LayoutOptions"
+                        Android="FillAndExpand"
+                        iOS="FillAndExpand"/>
+            </Image.HorizontalOptions>
+            <Image.VerticalOptions>
+                <helpers:OnCustomPlatform   
+                        x:TypeArguments="LayoutOptions"
+                        Android="End"
+                        iOS="FillAndExpand"/>
+            </Image.VerticalOptions>
+        </Image>-->
         <StackLayout Grid.Row="0" Padding="0,0,0,30">
             <StackLayout Orientation="Horizontal">
-                <ffimageloading:CachedImage VerticalOptions="Start" HorizontalOptions="Start" DownsampleToViewSize="true"
-                        Aspect="AspectFit" HeightRequest="50" WidthRequest="50" Source="devnl.png">
+                <ffimageloading:CachedImage 
+                    VerticalOptions="Start" 
+                    HorizontalOptions="Start" 
+                    DownsampleToViewSize="true"
+                        Aspect="AspectFit" 
+                    HeightRequest="64" 
+                    WidthRequest="64" 
+                    Source="devnl.png">
                     <ffimageloading:CachedImage.Transformations>
                         <fftransformations:CircleTransformation/>
                     </ffimageloading:CachedImage.Transformations>
                 </ffimageloading:CachedImage>
-                <Label  FontSize="20" TextColor="#1fa3f5"  Text="&#xf141;" HorizontalOptions="EndAndExpand">
+                <Label  FontSize="20" TextColor="#1fa3f5"   HorizontalOptions="EndAndExpand">
                     <Label.IsVisible>
                         <OnPlatform x:TypeArguments="x:Boolean">
                             <On Platform="Android" Value="false"/>
@@ -44,8 +93,14 @@
             </StackLayout>
         </StackLayout>
 
+        <!-- SEPARATOR -->
+        <Grid 
+                Grid.Row="1"
+                BackgroundColor="{StaticResource WhiteColor}"
+                Opacity="0.2"
+                HeightRequest="1" />
 
-        <ListView x:Name="listView" RowHeight="50" Grid.Row ="1" HasUnevenRows="True" SeparatorVisibility="None">
+        <ListView x:Name="listView" RowHeight="50" Grid.Row ="2" HasUnevenRows="True" SeparatorVisibility="None">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -53,34 +108,30 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30"/>
                                 <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="10" />
                             </Grid.ColumnDefinitions>
                             <Image Source="{Binding IconSource}" />
                             <Label Grid.Column="1" Text="{Binding Title}" VerticalOptions="FillAndExpand" TextColor="Silver"/>
+                            <Label Grid.Column="1" Text="3" VerticalOptions="FillAndExpand" HorizontalOptions="End" TextColor="Silver"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
+        <!-- SEPARATOR -->
+        <Grid 
+                Grid.Row="3"
+                BackgroundColor="{StaticResource WhiteColor}"
+                Opacity="0.2"
+                HeightRequest="1" />
 
 
-        <StackLayout Grid.Row="2" Orientation="Horizontal">
-            <Label  FontSize="20" TextColor="#1fa3f5" Text="&#xf186;" HorizontalOptions="Start">
-                <Label.IsVisible>
-                    <OnPlatform x:TypeArguments="x:Boolean">
-                        <On Platform="Android" Value="false"/>
-                        <On Platform="iOS" Value="true"/>
-                    </OnPlatform>
-                </Label.IsVisible>
+        <StackLayout Grid.Row="4" Orientation="Horizontal">
+            <Label  FontSize="20"  Text="Logout" HorizontalOptions="Start">
+              
             </Label>
-            <Label FontSize="20" TextColor="#1fa3f5" Text="&#xf029;" HorizontalOptions="EndAndExpand">
-                <Label.IsVisible>
-                    <OnPlatform x:TypeArguments="x:Boolean">
-                        <On Platform="Android" Value="false"/>
-                        <On Platform="iOS" Value="true"/>
-                    </OnPlatform>
-                </Label.IsVisible>
-            </Label>
+         
         </StackLayout>
     </Grid>
 </ContentPage>

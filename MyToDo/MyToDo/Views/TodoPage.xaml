@@ -15,6 +15,10 @@
 			Text="{Binding Telephone}"
 			Placeholder="Telephone"/>
         <Entry
+			Text="{Binding Email}"
+			Placeholder="Email"/>
+        
+        <Entry
 			Text="{Binding URL}"
 			Placeholder="URL"/>
         <Entry
@@ -75,13 +79,13 @@
 				TextColor="Black"
 				BackgroundColor="Fuchsia"
 				Command="{Binding IsDoneFilterCommand}"
-				CommandParameter="Female"/>
+				CommandParameter="Yes"/>
             <Button 
 				Text="NotDone"
 				TextColor="Black"
 				BackgroundColor="Aqua"
 				Command="{Binding NotDoneFilterCommand}"
-				CommandParameter="Male"/>
+				CommandParameter="No"/>
             <Button 
 				Text="10+"
 				TextColor="Black"

@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using MyToDo.Models;
 
+
 namespace MyToDo.Views
 {
    
@@ -14,9 +15,9 @@ namespace MyToDo.Views
             var masterPageItems = new List<MasterPageItem>();
             masterPageItems.Add(new MasterPageItem
             {
-                Title = "Todo",
+                Title = "IsDone_new",
                 IconSource = "contacts.png",
-                TargetType = typeof(TodoPage)
+                TargetType = typeof(IsdonePage)
             });
 
             masterPageItems.Add(new MasterPageItem
@@ -36,6 +37,14 @@ namespace MyToDo.Views
                 Title = "Person",
                 IconSource = "reminders.png",
                 TargetType = typeof(PersonPage)
+            });
+
+
+            masterPageItems.Add(new MasterPageItem
+            {
+                Title = "New Todos",
+                IconSource = "reminders.png",
+                TargetType = typeof(TodoPage)
             });
 
             listView.ItemsSource = masterPageItems;

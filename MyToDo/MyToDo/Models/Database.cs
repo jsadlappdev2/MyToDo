@@ -85,6 +85,7 @@ namespace MyToDo.Models
             lock (locker)
             {
                 return connection.Delete<T>(id);
+              
             }
         }
 

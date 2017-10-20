@@ -14,18 +14,36 @@ namespace MyToDo.ViewModels
         public string Type { get; set; }
         public string Description { get; set; }
         public string Telephone { get; set; }
+
+        public bool HasPhone { get; set; }
         public string URL { get; set; }
+
+        public bool HasURL { get; set; }
 
         public string Address { get; set; }
 
+        public bool HasAddress { get; set; }
+
         public string Photo { get; set; }
+
+        public bool HasPhoto { get; set; }
+
+        public string Email { get; set; }
+
+        public bool HasEmail { get; set; }
 
         public string DueDate { get; set; }
 
 
         public string IsDone { get; set; }
 
-    
+
+        //public bool HasEmailAddress => !string.IsNullOrWhiteSpace(Acquaintance?.Email);
+
+        //public bool HasPhoneNumber => !string.IsNullOrWhiteSpace(Acquaintance?.Phone);
+
+        //public bool HasAddress => !string.IsNullOrWhiteSpace(Acquaintance?.AddressString);
+
         public ObservableCollection<string> Records { get; set; }
         public ICommand AddCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
@@ -51,6 +69,7 @@ namespace MyToDo.ViewModels
             database.CreateTable<Todo>();
             Records = new ObservableCollection<string>();
             ShowAllRecords();
+         //   FilterByIsDone("Yes");
             //added by JS
             IsDoneFilterCommand = new Command(FilterByIsDone);
             NotDoneFilterCommand = new Command(FilterByNotDone);
@@ -65,10 +84,17 @@ namespace MyToDo.ViewModels
                 Type = Type,
                 Description = Description,
                 Telephone = Telephone,
+                HasPhone=!string.IsNullOrWhiteSpace(Telephone),
                 URL = URL,
+                HasUrl=!string.IsNullOrWhiteSpace(URL),
                 Address = Address,
+                HasAddress = !string.IsNullOrWhiteSpace(URL),
                 Photo = "", //set as default picture and change it later.,
                                      //  DueDate = dpDueDate.Date.ToString("d"),
+                HasPhoto = !string.IsNullOrWhiteSpace(Photo),
+
+                Email=Email,
+                HasEmail = !string.IsNullOrWhiteSpace(Email),
                 DueDate = DueDate,
                 IsDone = IsDone
 
@@ -112,7 +138,7 @@ namespace MyToDo.ViewModels
         void FilterByIsDone(object obj)
         {
             var isdone = ((string)obj) == "Yes" ? "Yes" : "No";
-            var result = database.Query<Todo>("SELECT * FROM Todo WHERE IsDone = 'Yes'", new object[] { isdone });
+            var result = database.Query<Todo>("SELECT * FROM Todo WHERE IsDone = ? ", new object[] { isdone });
             Records.Clear();
             foreach (var todoisdone in result)
             {
@@ -123,7 +149,7 @@ namespace MyToDo.ViewModels
         void FilterByNotDone(object obj)
         {
             var isdone = ((string)obj) == "No" ? "Yes" : "No";
-            var result = database.Query<Todo>("SELECT * FROM Todo WHERE IsDone = 'No'", new object[] { isdone });
+            var result = database.Query<Todo>("SELECT * FROM Todo WHERE IsDone = ? ", new object[] { isdone });
             Records.Clear();
             foreach (var todoisdone in result)
             {

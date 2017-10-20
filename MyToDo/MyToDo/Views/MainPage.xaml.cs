@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using MyToDo.ViewModels;
 using MyToDo.Models;
+using MyToDo.Views;
 
 namespace MyToDo
 {
@@ -12,10 +13,10 @@ namespace MyToDo
             InitializeComponent();
             masterPage.ListView.ItemSelected += OnItemSelected;
 
-            if (Device.RuntimePlatform == Device.Windows)
-            {
-                MasterBehavior = MasterBehavior.Popover;
-            }
+            //if (Device.RuntimePlatform == Device.Windows)
+            //{
+            //    MasterBehavior = MasterBehavior.Popover;
+            //}
         }
         void OnItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
