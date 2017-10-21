@@ -21,26 +21,44 @@
                 <DataTemplate>
                     <ViewCell>
                         
-                        <AbsoluteLayout>
-
-            <StackLayout Spacing="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+              <AbsoluteLayout>
+              <StackLayout Spacing="0" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
                 <ContentView Padding="10">
                     <StackLayout Orientation="Horizontal" Spacing="10">
-                        <AbsoluteLayout>
-                            <ffimageloading:CachedImage x:Name="ProfilePhoto" HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="90" HeightRequest="90" DownsampleToViewSize="true" Source="placeholderProfileImage.png" LoadingPlaceholder="placeholderProfileImage.png">
-                                <ffimageloading:CachedImage.Transformations>
-                                    <fftransformations:CircleTransformation />
-                                </ffimageloading:CachedImage.Transformations>
-                            </ffimageloading:CachedImage>
-                        </AbsoluteLayout>
-                        <StackLayout Spacing="10">
+                      
+                        <StackLayout Spacing="10">                       
+                                                     
+                            
+                            <!--Tasktype and duedate-->
                             <ContentView>
-                                <StackLayout Spacing="0">
-                                    <Label Text="Company" />
-                                    <Label Text="JobTitle" FontSize="Small" TextColor="Silver" />
+                                <StackLayout Spacing="0" Orientation="Horizontal">
+                                                    <ffimageloading:CachedImage 
+                                        VerticalOptions="Center" 
+                                        HorizontalOptions="Start" 
+                                        DownsampleToViewSize="true"
+                                        Aspect="AspectFit" 
+                                       HeightRequest="25" 
+                                       WidthRequest="25" 
+                                       Source="devnl.png">
+                                        <ffimageloading:CachedImage.Transformations>
+                                                            <fftransformations:CircleTransformation/>
+                                                        </ffimageloading:CachedImage.Transformations>
+                                        </ffimageloading:CachedImage>
+                                                    <Label Text="      DueDate: " FontSize="Micro" TextColor="Silver"  />
+                                                    <Label Text="{Binding DueDate}" />
+                             
                                 </StackLayout>
                             </ContentView>
-                            <ContentView IsEnabled="{Binding HasAddress}" IsVisible="{Binding HasAddress}">
+
+                          <!--decription-->
+                            <ContentView>
+                                   <AbsoluteLayout VerticalOptions="FillAndExpand">
+                                      <Label Text="{Binding Description}" HeightRequest="100" FontSize="Medium"/>                                                    
+                                    </AbsoluteLayout>      
+                            </ContentView>
+                            
+                            <!--address-->
+                           <ContentView IsEnabled="{Binding HasAddress}" IsVisible="{Binding HasAddress}">
                                 <StackLayout Orientation="Horizontal" Spacing="10">
                                     <Image Source="directions.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20">
                                         <Image.GestureRecognizers>
@@ -48,12 +66,13 @@
                                         </Image.GestureRecognizers>
                                     </Image>
                                     <StackLayout Spacing="0">
-                                        <Label Text="Street" FontSize="Micro" LineBreakMode="TailTruncation" />
-                                        <Label Text="City" FontSize="Micro" LineBreakMode="TailTruncation" />
-                                        <Label Text="{Binding Address}" FontSize="Micro" LineBreakMode="TailTruncation" TextColor="Silver" />
+                                      
+                                        <Label Text="{Binding Address}" FontSize="Small" LineBreakMode="TailTruncation"  />
                                     </StackLayout>
                                 </StackLayout>
                             </ContentView>
+                            
+                            <!--telephone-->                            
                             <ContentView IsEnabled="{Binding HasPhone}" IsVisible="{Binding HasPhone}">
                                 <StackLayout Orientation="Horizontal" Spacing="10">
                                     <Image Source="message.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20">
@@ -69,17 +88,20 @@
                                     </Image>
                                 </StackLayout>
                             </ContentView>
+                            
+                            <!--EMail-->
                             <ContentView IsEnabled="{Binding HasEmail}" IsVisible="{Binding HasEmail}">
                                 <StackLayout Orientation="Horizontal" Spacing="10">
                                     <Image Source="email.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20">
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Command="" NumberOfTapsRequired="1" />
+                                            <TapGestureRecognizer Command="{Binding EmailCommand}" NumberOfTapsRequired="1" />
                                         </Image.GestureRecognizers>
                                     </Image>
-                                    <Label Text="{Binding Email}" FontSize="Micro" HeightRequest="20" LineBreakMode="TailTruncation" VerticalTextAlignment="Center" />
+                                    <Label Text="{Binding Email}" FontSize="Small" HeightRequest="20" LineBreakMode="TailTruncation" VerticalTextAlignment="Center" />
                                 </StackLayout>
                             </ContentView>
-                            <!--added by js-->
+                            
+                            <!--URL-->
                             <ContentView IsEnabled="{Binding HasUrl}" IsVisible="{Binding HasUrl}">
                                 <StackLayout Orientation="Horizontal" Spacing="10">
                                     <Image Source="email.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20">
@@ -87,30 +109,27 @@
                                             <TapGestureRecognizer Command="" NumberOfTapsRequired="1" />
                                         </Image.GestureRecognizers>
                                     </Image>
-                                    <Label Text="{Binding URL}" FontSize="Micro" HeightRequest="20" LineBreakMode="TailTruncation" VerticalTextAlignment="Center" />
+                                    <Label Text="{Binding URL}" FontSize="Small" HeightRequest="20" LineBreakMode="TailTruncation" VerticalTextAlignment="Center" />
                                 </StackLayout>
                             </ContentView>
 
                         </StackLayout>
                     </StackLayout>
                 </ContentView>
+                
+                <!--seperator-->  
                 <ContentView HeightRequest="1" BackgroundColor="Silver" />
+                
+                <!--photo-->
                 <AbsoluteLayout VerticalOptions="FillAndExpand">
-                    <ContentView Padding="50" VerticalOptions="Center" IsVisible="{Binding HasAddress}}" IsEnabled="{Binding HasAddress}" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1.0, 1.0">
-                        <StackLayout Spacing="20">
-                            <Label Text="No map is available because this person does not have an address." VerticalTextAlignment="Center" />
-                            <Label Text="Enter an address on the edit screeen to see this person's location on a map." VerticalTextAlignment="Center" />
-                        </StackLayout>
-                    </ContentView>
-                    <AbsoluteLayout IsEnabled="{Binding HasAddress}" IsVisible="{Binding HasAddress}" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1.0, 1.0">
-                        <!--<ActivityIndicator IsVisible="{Binding IsBusy}" IsRunning="{Binding IsBusy}" AbsoluteLayout.LayoutFlags="PositionProportional, WidthProportional" AbsoluteLayout.LayoutBounds="0.5, 0.5, 0.2, AutoSize" />-->
-                        <maps:Map x:Name="AcquaintanceMap" IsVisible="true" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1.0, 1.0" />
-                    </AbsoluteLayout>
+                   <ContentView Padding="50" VerticalOptions="Center" IsVisible="{Binding HasPhoto}}" IsEnabled="{Binding HasPhoto}" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0, 0, 1.0, 1.0">
+                      <Image Source="placeholderProfileImage.png" ></Image>
+                   </ContentView>
                 </AbsoluteLayout>
-            </StackLayout>
-
-
-        </AbsoluteLayout>
+                            
+            
+                   </StackLayout>
+              </AbsoluteLayout>
 
                     </ViewCell>
                 </DataTemplate>

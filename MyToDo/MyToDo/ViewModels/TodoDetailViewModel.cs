@@ -5,6 +5,8 @@ using Xamarin.Forms;
 using MyToDo.Models;
 using System.Collections.Generic;
 using System;
+using Plugin.Messaging;
+
 
 namespace MyToDo.ViewModels
 {
@@ -90,6 +92,24 @@ namespace MyToDo.ViewModels
 
         }
 
+      
+        //Send email
+        Command _EmailCommand;
+
+        public Command EmailCommand => _EmailCommand ??
+                                       (_EmailCommand = new Command(ExecuteEmailCommandCommand));
+
+        void ExecuteEmailCommandCommand()
+        {
+            if (string.IsNullOrWhiteSpace(IsDoneLists[11].ToString()))
+                return;
+
+
+            var emailTask = MessagingPlugin.EmailMessenger;
+                if (emailTask.CanSendEmail)
+                    emailTask.SendEmail(IsDoneLists[11].ToString());
+          
+        }
 
 
 
