@@ -9,11 +9,15 @@
               Title="Todo Detail"
              x:Name="TodoDetailPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Delete" Icon="delete.png"  />
-        <ToolbarItem Text="Edit" Icon="edit.png" />
+        <ToolbarItem Text="Email" Icon="email.png" Command="{Binding SendemailCommand}"  />
+        <ToolbarItem Text="Text" Icon="message.png" Command="{Binding SendTextCommand}"/>
+        <ToolbarItem Text="Phone" Icon="phone.png" Command="{Binding PhoneCallCommand}"/>
+
+        <ToolbarItem Text="Map" Icon="directions.png" Command="{Binding ExternalMapCommand}"/>
     </ContentPage.ToolbarItems>
 
-    <ContentPage.Content>
+
+        
         <ListView ItemsSource="{Binding IsDoneLists}"
                   RowHeight="500"
                   HasUnevenRows="True" >
@@ -94,7 +98,7 @@
                                 <StackLayout Orientation="Horizontal" Spacing="10">
                                     <Image Source="email.png" Aspect="AspectFit" HeightRequest="20" WidthRequest="20">
                                         <Image.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding EmailCommand}" NumberOfTapsRequired="1" />
+                                                        <TapGestureRecognizer Command="{Binding SendemailCommand}"  />
                                         </Image.GestureRecognizers>
                                     </Image>
                                     <Label Text="{Binding Email}" FontSize="Small" HeightRequest="20" LineBreakMode="TailTruncation" VerticalTextAlignment="Center" />
@@ -135,8 +139,8 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
-        
-        
-    </ContentPage.Content>
+
+
+
+
 </ContentPage>
