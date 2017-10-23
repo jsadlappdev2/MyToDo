@@ -9,5 +9,7 @@ namespace MyToDo.Models
         public string IconSource { get; set; }
 
         public Type TargetType { get; set; }
+
+        public string NewItemCount { get; set; }
     }
 }

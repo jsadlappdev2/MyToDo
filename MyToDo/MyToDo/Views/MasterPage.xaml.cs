@@ -17,14 +17,16 @@ namespace MyToDo.Views
             {
                 Title = "IsDone_new",
                 IconSource = "contacts.png",
-                TargetType = typeof(IsdonePage)
+                TargetType = typeof(IsdonePage),
+                NewItemCount ="99+ new"
             });
 
             masterPageItems.Add(new MasterPageItem
             {
                 Title = "IsDone",
                 IconSource = "contacts.png",
-                TargetType = typeof(TodoIsdonePage)
+                TargetType = typeof(TodoIsdonePage),
+                NewItemCount = "15 new"
             });
             masterPageItems.Add(new MasterPageItem
             {

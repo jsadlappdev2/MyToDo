@@ -73,6 +73,8 @@ namespace MyToDo.ViewModels
             //added by JS
             IsDoneFilterCommand = new Command(FilterByIsDone);
             NotDoneFilterCommand = new Command(FilterByNotDone);
+
+            DueDate = "01/01/2017";
         }
 
         void Add()
@@ -95,7 +97,7 @@ namespace MyToDo.ViewModels
 
                 Email=Email,
                 HasEmail = !string.IsNullOrWhiteSpace(Email),
-                DueDate = DueDate,
+                DueDate = DueDate.ToString(),
                 IsDone = IsDone
 
             };

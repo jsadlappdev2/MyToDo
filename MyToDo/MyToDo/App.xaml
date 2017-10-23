@@ -21,8 +21,10 @@
             <Color x:Key="ProfileGrayColor">#afb3be</Color>
             <Color x:Key="BlackColor">#000000</Color>
             <Color x:Key="GreenColor">#0aca91</Color>
+            <Color x:Key="DarkblueColor">#547799</Color>
+            <!--<Color x:key="DarkblueColor">#547799</Color>-->
 
-            <!-- Fonts -->
+                <!-- Fonts --><!--
             <OnPlatform x:Key="MontserratRegular"
                         x:TypeArguments="x:String"
                         iOS="Montserrat-Regular"
@@ -88,7 +90,7 @@
                         x:TypeArguments="x:Double"
                         iOS="32"
                         Android="48"
-                     />
+                     />-->
             
             <!--Styles-->
 

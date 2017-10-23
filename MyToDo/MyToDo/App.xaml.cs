@@ -21,6 +21,7 @@ namespace MyToDo
             //    BackgroundColor = Color.FromHex("F44336")
 
             //};
+
         }
 
         protected override void OnStart()

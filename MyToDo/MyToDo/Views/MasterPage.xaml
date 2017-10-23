@@ -13,9 +13,10 @@
         <Grid.BackgroundColor>
             <helpers:OnCustomPlatform   
                 x:TypeArguments="Color"
-                Android="{StaticResource BlueColor}"
-                iOS="{StaticResource BlueColor}"  />
+                Android= "{StaticResource DarkblueColor}"
+                iOS="{StaticResource DarkblueColor}"  />
         </Grid.BackgroundColor>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -112,7 +113,7 @@
                             </Grid.ColumnDefinitions>
                             <Image Source="{Binding IconSource}" />
                             <Label Grid.Column="1" Text="{Binding Title}" VerticalOptions="FillAndExpand" TextColor="Silver"/>
-                            <Label Grid.Column="1" Text="3" VerticalOptions="FillAndExpand" HorizontalOptions="End" TextColor="Silver"/>
+                            <Label Grid.Column="1" Text="{Binding NewItemCount}" VerticalOptions="FillAndExpand" HorizontalOptions="End" TextColor="Red" FontSize="Small"/>
                         </Grid>
                     </ViewCell>
                 </DataTemplate>

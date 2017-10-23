@@ -28,10 +28,12 @@
 			Text="{Binding Photo}"
 			Placeholder="Photo"/>
 
-        <Entry
+        <!--<Entry
 			Text="{Binding DueDate}"
-			Placeholder="DueDate"/>
-        <!--<DatePicker x:Name="dpDueDate" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand"  />-->
+			Placeholder="DueDate"/>-->
+        <DatePicker x:Name="DueDate" Date ="{Binding DueDate}" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand"  >
+            <!--<DatePicker.Format>yyyy-MM-dd</DatePicker.Format>-->
+        </DatePicker>
 
         <Entry
 			Text="{Binding IsDone}"
